@@ -1,4 +1,4 @@
-// Ref: pokemon-showdown/sim/dex-data.ts: type chart multipliers (trimmed to multipliers only).
+// 参考: pokemon-showdown/sim/dex-data.ts のタイプ倍率（倍率のみを抜粋）。
 pub fn type_effectiveness(move_type: &str, target_types: &[String]) -> f32 {
     if target_types.is_empty() {
         return 1.0;

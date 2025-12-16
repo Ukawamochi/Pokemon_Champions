@@ -1,0 +1,138 @@
+{
+  "teamA": [
+    {
+      "name": "Charizard",
+      "types": ["fire", "flying"],
+      "stats": {"hp": 360, "atk": 293, "def": 280, "spa": 348, "spd": 295, "spe": 328},
+      "moves": [
+        {"name": "Flamethrower", "type": "fire", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Air Slash", "type": "flying", "category": "special", "power": 75, "accuracy": 95, "priority": 0},
+        {"name": "Dragon Claw", "type": "dragon", "category": "physical", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Quick Attack", "type": "normal", "category": "physical", "power": 40, "accuracy": 100, "priority": 1}
+      ]
+    },
+    {
+      "name": "Venusaur",
+      "types": ["grass", "poison"],
+      "stats": {"hp": 364, "atk": 289, "def": 291, "spa": 328, "spd": 328, "spe": 284},
+      "moves": [
+        {"name": "Giga Drain", "type": "grass", "category": "special", "power": 75, "accuracy": 100, "priority": 0},
+        {"name": "Sludge Bomb", "type": "poison", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Earthquake", "type": "ground", "category": "physical", "power": 100, "accuracy": 100, "priority": 0},
+        {"name": "Sleep Powder", "type": "grass", "category": "status", "power": 0, "accuracy": 75, "priority": 0}
+      ]
+    },
+    {
+      "name": "Blastoise",
+      "types": ["water"],
+      "stats": {"hp": 362, "atk": 291, "def": 328, "spa": 295, "spd": 339, "spe": 280},
+      "moves": [
+        {"name": "Hydro Pump", "type": "water", "category": "special", "power": 110, "accuracy": 80, "priority": 0},
+        {"name": "Ice Beam", "type": "ice", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Aura Sphere", "type": "fighting", "category": "special", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Rapid Spin", "type": "normal", "category": "physical", "power": 50, "accuracy": 100, "priority": 0}
+      ]
+    },
+    {
+      "name": "Pikachu",
+      "types": ["electric"],
+      "stats": {"hp": 274, "atk": 229, "def": 196, "spa": 218, "spd": 218, "spe": 306},
+      "moves": [
+        {"name": "Thunderbolt", "type": "electric", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Volt Tackle", "type": "electric", "category": "physical", "power": 120, "accuracy": 100, "priority": 0},
+        {"name": "Iron Tail", "type": "steel", "category": "physical", "power": 100, "accuracy": 75, "priority": 0},
+        {"name": "Quick Attack", "type": "normal", "category": "physical", "power": 40, "accuracy": 100, "priority": 1}
+      ]
+    },
+    {
+      "name": "Machamp",
+      "types": ["fighting"],
+      "stats": {"hp": 384, "atk": 394, "def": 284, "spa": 249, "spd": 281, "spe": 207},
+      "moves": [
+        {"name": "Close Combat", "type": "fighting", "category": "physical", "power": 120, "accuracy": 100, "priority": 0},
+        {"name": "Stone Edge", "type": "rock", "category": "physical", "power": 100, "accuracy": 80, "priority": 0},
+        {"name": "Bullet Punch", "type": "steel", "category": "physical", "power": 40, "accuracy": 100, "priority": 1},
+        {"name": "Knock Off", "type": "dark", "category": "physical", "power": 65, "accuracy": 100, "priority": 0}
+      ]
+    },
+    {
+      "name": "Alakazam",
+      "types": ["psychic"],
+      "stats": {"hp": 314, "atk": 218, "def": 196, "spa": 405, "spd": 249, "spe": 372},
+      "moves": [
+        {"name": "Psychic", "type": "psychic", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Focus Blast", "type": "fighting", "category": "special", "power": 120, "accuracy": 70, "priority": 0},
+        {"name": "Shadow Ball", "type": "ghost", "category": "special", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Dazzling Gleam", "type": "fairy", "category": "special", "power": 80, "accuracy": 100, "priority": 0}
+      ]
+    }
+  ],
+  "teamB": [
+    {
+      "name": "Gengar",
+      "types": ["ghost", "poison"],
+      "stats": {"hp": 324, "atk": 229, "def": 216, "spa": 394, "spd": 296, "spe": 350},
+      "moves": [
+        {"name": "Shadow Ball", "type": "ghost", "category": "special", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Sludge Bomb", "type": "poison", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Thunderbolt", "type": "electric", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Destiny Bond", "type": "ghost", "category": "status", "power": 0, "accuracy": 100, "priority": 0}
+      ]
+    },
+    {
+      "name": "Dragonite",
+      "types": ["dragon", "flying"],
+      "stats": {"hp": 386, "atk": 403, "def": 317, "spa": 328, "spd": 328, "spe": 284},
+      "moves": [
+        {"name": "Outrage", "type": "dragon", "category": "physical", "power": 120, "accuracy": 100, "priority": 0},
+        {"name": "Hurricane", "type": "flying", "category": "special", "power": 110, "accuracy": 70, "priority": 0},
+        {"name": "Extreme Speed", "type": "normal", "category": "physical", "power": 80, "accuracy": 100, "priority": 2},
+        {"name": "Fire Punch", "type": "fire", "category": "physical", "power": 75, "accuracy": 100, "priority": 0}
+      ]
+    },
+    {
+      "name": "Jolteon",
+      "types": ["electric"],
+      "stats": {"hp": 344, "atk": 251, "def": 240, "spa": 350, "spd": 306, "spe": 394},
+      "moves": [
+        {"name": "Thunderbolt", "type": "electric", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Volt Switch", "type": "electric", "category": "special", "power": 70, "accuracy": 100, "priority": 0},
+        {"name": "Shadow Ball", "type": "ghost", "category": "special", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Quick Attack", "type": "normal", "category": "physical", "power": 40, "accuracy": 100, "priority": 1}
+      ]
+    },
+    {
+      "name": "Snorlax",
+      "types": ["normal"],
+      "stats": {"hp": 524, "atk": 350, "def": 251, "spa": 251, "spd": 350, "spe": 174},
+      "moves": [
+        {"name": "Body Slam", "type": "normal", "category": "physical", "power": 85, "accuracy": 100, "priority": 0},
+        {"name": "Crunch", "type": "dark", "category": "physical", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Earthquake", "type": "ground", "category": "physical", "power": 100, "accuracy": 100, "priority": 0},
+        {"name": "Rest", "type": "psychic", "category": "status", "power": 0, "accuracy": 100, "priority": 0}
+      ]
+    },
+    {
+      "name": "Gyarados",
+      "types": ["water", "flying"],
+      "stats": {"hp": 394, "atk": 383, "def": 284, "spa": 240, "spd": 306, "spe": 287},
+      "moves": [
+        {"name": "Waterfall", "type": "water", "category": "physical", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Bounce", "type": "flying", "category": "physical", "power": 85, "accuracy": 85, "priority": 0},
+        {"name": "Crunch", "type": "dark", "category": "physical", "power": 80, "accuracy": 100, "priority": 0},
+        {"name": "Aqua Jet", "type": "water", "category": "physical", "power": 40, "accuracy": 100, "priority": 1}
+      ]
+    },
+    {
+      "name": "Lapras",
+      "types": ["water", "ice"],
+      "stats": {"hp": 464, "atk": 289, "def": 295, "spa": 295, "spd": 317, "spe": 218},
+      "moves": [
+        {"name": "Ice Beam", "type": "ice", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Surf", "type": "water", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Thunderbolt", "type": "electric", "category": "special", "power": 90, "accuracy": 100, "priority": 0},
+        {"name": "Quick Attack", "type": "normal", "category": "physical", "power": 40, "accuracy": 100, "priority": 1}
+      ]
+    }
+  ]
+}

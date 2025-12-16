@@ -42,7 +42,7 @@ pub struct Battle {
     team_b: Vec<Battler>,
     active_a: usize,
     active_b: usize,
-    // Ref: pokemon-showdown/sim/battle.ts: Battle uses a shared PRNG (Battle.prng).
+    // 参考: pokemon-showdown/sim/battle.ts: Battle は共有 PRNG (Battle.prng) を用いる。
     rng: SmallRng,
 }
 
@@ -143,8 +143,9 @@ impl Battle {
                 move_index: m,
                 priority: mv.priority,
                 speed: battler.pokemon.stats.spe,
-                // Ref: pokemon-showdown/sim/battle.ts: comparePriority/speed and then PRNG tie-breaker via this.random().
+                // 参考: pokemon-showdown/sim/battle.ts: comparePriority/speed の後、乱数タイブレーク (this.random)。
                 tie_break: self.rng.gen(),
+                battler_slot: self.active_index(Side::A),
             });
         }
         if let Some(m) = b_move {
@@ -156,6 +157,7 @@ impl Battle {
                 priority: mv.priority,
                 speed: battler.pokemon.stats.spe,
                 tie_break: self.rng.gen(),
+                battler_slot: self.active_index(Side::B),
             });
         }
         actions.sort_by(|lhs, rhs| {
@@ -175,6 +177,9 @@ impl Battle {
             if self.alive_count(action.side) == 0 || self.alive_count(action.side.opponent()) == 0 {
                 return;
             }
+            if self.active_index(action.side) != action.battler_slot {
+                continue;
+            }
             if self.active(action.side).is_fainted() {
                 continue;
             }
@@ -190,12 +195,9 @@ impl Battle {
         if !roll_accuracy(&move_def, &mut self.rng) {
             return;
         }
-        let damage = compute_damage(
-            &self.active(side).pokemon,
-            &self.active(side.opponent()).pokemon,
-            &move_def,
-            &mut self.rng,
-        );
+        let attacker = self.active(side).pokemon.clone();
+        let defender = self.active(side.opponent()).pokemon.clone();
+        let damage = compute_damage(&attacker, &defender, &move_def, &mut self.rng);
         if damage == 0 {
             return;
         }
@@ -216,11 +218,12 @@ struct PlannedAction {
     priority: i32,
     speed: u32,
     tie_break: u64,
+    battler_slot: usize,
 }
 
 pub fn simulate_battle(team_a: &[Pokemon], team_b: &[Pokemon], seed: u64) -> BattleResult {
     let mut battle = Battle::new(team_a, team_b, seed);
-    // Ref: pokemon-showdown/sim/battle.ts: turn loop until one side has no Pokemon left.
+        // 参考: pokemon-showdown/sim/battle.ts: どちらかの手持ちが尽きるまでターンを回す。
     for _turn in 0..500 {
         if battle.alive_count(Side::A) == 0 && battle.alive_count(Side::B) == 0 {
             return BattleResult::Tie;
@@ -237,7 +240,7 @@ pub fn simulate_battle(team_a: &[Pokemon], team_b: &[Pokemon], seed: u64) -> Bat
 }
 
 fn roll_accuracy(move_def: &Move, rng: &mut SmallRng) -> bool {
-    // Ref: pokemon-showdown/sim/battle.ts: tryMoveHit uses randomChance(move.accuracy, 100).
+    // 参考: pokemon-showdown/sim/battle.ts: tryMoveHit は randomChance(move.accuracy, 100) を用いる。
     if move_def.accuracy >= 100.0 {
         return true;
     }
@@ -262,7 +265,7 @@ pub fn compute_damage(
     move_def: &Move,
     rng: &mut SmallRng,
 ) -> u32 {
-    // Ref: pokemon-showdown/sim/damage.ts: getDamage formula simplified to level scaling + STAB/type/random.
+    // 参考: pokemon-showdown/sim/damage.ts: getDamage をレベル補正 + STAB/相性/乱数に簡略化。
     if move_def.power == 0 || matches!(move_def.category, MoveCategory::Status) {
         return 0;
     }
@@ -294,7 +297,7 @@ pub fn compute_damage(
     if type_mod == 0.0 {
         return 0;
     }
-    let rand_mod = (rng.gen_range(85..=100) as f32) / 100.0; // PS randomDamage roll.
+    let rand_mod = (rng.gen_range(85..=100) as f32) / 100.0; // PS の randomDamage 相当。
     base *= stab * type_mod * rand_mod;
     base.floor().max(1.0) as u32
 }
