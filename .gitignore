@@ -1,3 +1,6 @@
 .serena
 .venv
 /target
+/pokemon-showdown
+/node_modules
+/battle/target

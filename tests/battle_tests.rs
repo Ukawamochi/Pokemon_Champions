@@ -1,10 +1,17 @@
-use pokemon_battle_matrix::battle::{compute_damage, sample_accuracy_hits, simulate_battle, BattleResult};
+use pokemon_battle_matrix::battle::{
+    compute_damage_preview, sample_accuracy_hits, simulate_battle, BattleResult,
+};
 use pokemon_battle_matrix::model::{Move, MoveCategory, Pokemon, Stats};
-use rand::rngs::SmallRng;
-use rand::SeedableRng;
 use std::collections::HashMap;
 
-fn make_move(name: &str, move_type: &str, category: MoveCategory, power: u32, accuracy: f32, priority: i32) -> Move {
+fn make_move(
+    name: &str,
+    move_type: &str,
+    category: MoveCategory,
+    power: u32,
+    accuracy: f32,
+    priority: i32,
+) -> Move {
     Move {
         name: name.to_string(),
         move_type: move_type.to_string(),
@@ -12,6 +19,21 @@ fn make_move(name: &str, move_type: &str, category: MoveCategory, power: u32, ac
         power,
         accuracy,
         priority,
+        pp: 10,
+        crit_rate: 0,
+        secondary: None,
+        recoil: None,
+        drain: None,
+        boosts: None,
+        self_boosts: None,
+        status: None,
+        status_chance: None,
+        set_weather: None,
+        hazard: None,
+        protect: false,
+        switch_after: false,
+        multihit: None,
+        trick_room: false,
         extras: HashMap::new(),
     }
 }
@@ -29,14 +51,30 @@ fn make_mon(name: &str, types: &[&str], speed: u32, mv: Move) -> Pokemon {
             spe: speed,
         },
         moves: vec![mv],
+        item: None,
+        ability: None,
         extras: HashMap::new(),
     }
 }
 
 #[test]
 fn priority_beats_speed() {
-    let priority_move = make_move("Quick Blow", "normal", MoveCategory::Physical, 200, 100.0, 1);
-    let normal_move = make_move("Heavy Swing", "normal", MoveCategory::Physical, 200, 100.0, 0);
+    let priority_move = make_move(
+        "Quick Blow",
+        "normal",
+        MoveCategory::Physical,
+        200,
+        100.0,
+        1,
+    );
+    let normal_move = make_move(
+        "Heavy Swing",
+        "normal",
+        MoveCategory::Physical,
+        200,
+        100.0,
+        0,
+    );
     let slow_with_priority = make_mon("Slowmon", &["normal"], 50, priority_move);
     let fast_no_priority = make_mon("Fastmon", &["normal"], 100, normal_move);
     let result = simulate_battle(&[slow_with_priority], &[fast_no_priority], 1);
@@ -66,7 +104,10 @@ fn speed_ties_use_rng() {
             BattleResult::Tie => {}
         }
     }
-    assert!(a_wins > 0 && b_wins > 0, "tie-breaker should allow either side to move first");
+    assert!(
+        a_wins > 0 && b_wins > 0,
+        "tie-breaker should allow either side to move first"
+    );
 }
 
 #[test]
@@ -74,7 +115,10 @@ fn accuracy_rolls_respect_probability() {
     let shaky = make_move("Shaky", "normal", MoveCategory::Physical, 50, 50.0, 0);
     let hits = sample_accuracy_hits(&shaky, 42, 1000);
     let rate = hits as f64 / 1000.0;
-    assert!((rate - 0.5).abs() < 0.1, "expected hit rate near 0.5, got {rate}");
+    assert!(
+        (rate - 0.5).abs() < 0.1,
+        "expected hit rate near 0.5, got {rate}"
+    );
 }
 
 #[test]
@@ -85,13 +129,9 @@ fn stab_and_type_effectiveness_affect_damage() {
     let target_grass = make_mon("Leafy", &["grass"], 80, neutral_move.clone());
     let target_water = make_mon("Splash", &["water"], 80, neutral_move.clone());
 
-    let mut rng = SmallRng::seed_from_u64(7);
-    let damage_fire_grass = compute_damage(&attacker, &target_grass, &fire_move, &mut rng);
-    let mut rng = SmallRng::seed_from_u64(7);
-    let damage_fire_water = compute_damage(&attacker, &target_water, &fire_move, &mut rng);
-
-    let mut rng = SmallRng::seed_from_u64(8);
-    let damage_neutral_grass = compute_damage(&attacker, &target_grass, &neutral_move, &mut rng);
+    let damage_fire_grass = compute_damage_preview(&attacker, &target_grass, &fire_move, 7);
+    let damage_fire_water = compute_damage_preview(&attacker, &target_water, &fire_move, 7);
+    let damage_neutral_grass = compute_damage_preview(&attacker, &target_grass, &neutral_move, 8);
 
     assert!(damage_fire_grass > damage_fire_water);
     assert!(damage_fire_grass > damage_neutral_grass);

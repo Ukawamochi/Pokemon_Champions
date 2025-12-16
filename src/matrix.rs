@@ -1,4 +1,4 @@
-use crate::battle::{simulate_battle, BattleResult};
+use crate::battle::{simulate_battle_with_options, BattleResult, SimulationOptions};
 use crate::model::{Pokemon, TeamsFile};
 use rand::rngs::SmallRng;
 use rand::{Rng, SeedableRng};
@@ -20,7 +20,12 @@ fn selection_from_indices(team: &[Pokemon], indices: &[usize; 3]) -> Vec<Pokemon
     indices.iter().map(|&idx| team[idx].clone()).collect()
 }
 
-pub fn compute_matrix(teams: &TeamsFile, sims_per_cell: usize, seed: u64) -> Vec<Vec<f64>> {
+pub fn compute_matrix(
+    teams: &TeamsFile,
+    sims_per_cell: usize,
+    seed: u64,
+    options: &SimulationOptions,
+) -> Vec<Vec<f64>> {
     let combos_a = choose3_indices(teams.team_a.len());
     let combos_b = choose3_indices(teams.team_b.len());
     let selections_a: Vec<Vec<Pokemon>> = combos_a
@@ -45,7 +50,7 @@ pub fn compute_matrix(teams: &TeamsFile, sims_per_cell: usize, seed: u64) -> Vec
             let mut ties = 0u64;
             for _ in 0..sims_per_cell {
                 let battle_seed = cell_rng.gen();
-                match simulate_battle(a_sel, b_sel, battle_seed) {
+                match simulate_battle_with_options(a_sel, b_sel, battle_seed, options) {
                     BattleResult::AWins => a_wins += 1,
                     BattleResult::BWins => {}
                     BattleResult::Tie => ties += 1,
