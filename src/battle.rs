@@ -245,6 +245,17 @@ fn roll_accuracy(move_def: &Move, rng: &mut SmallRng) -> bool {
     roll < move_def.accuracy
 }
 
+pub fn sample_accuracy_hits(move_def: &Move, seed: u64, trials: usize) -> usize {
+    let mut rng = SmallRng::seed_from_u64(seed);
+    let mut hits = 0usize;
+    for _ in 0..trials {
+        if roll_accuracy(move_def, &mut rng) {
+            hits += 1;
+        }
+    }
+    hits
+}
+
 pub fn compute_damage(
     attacker: &Pokemon,
     defender: &Pokemon,
