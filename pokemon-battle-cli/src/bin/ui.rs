@@ -1,8 +1,9 @@
+#[path = "../ui.rs"]
 mod ui;
 
 use anyhow::Context;
-use pokemon_battle_matrix::battle::{Battle, BattleOptions, BattlePolicy, PlayerAction, Side};
-use pokemon_battle_matrix::{load_teams, model::{Pokemon, TeamsFile}, MctsMode, MctsParams};
+use pokemon_battle_core::battle::{Battle, BattleOptions, BattlePolicy, PlayerAction, Side};
+use pokemon_battle_core::{load_teams, model::{Pokemon, TeamsFile}, MctsMode, MctsParams};
 use rand::rngs::SmallRng;
 use rand::seq::SliceRandom;
 use rand::{Rng, SeedableRng};

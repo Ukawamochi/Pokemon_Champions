@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"/><title>Showdown Diff Report</title><style>
+body{font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:24px;}
+code,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
+.ok{color:#0a7;}
+.bad{color:#c33;}
+.card{border:1px solid #ddd; border-radius:10px; padding:12px 14px; margin:12px 0;}
+.turn{margin-top:18px;}
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.tag{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; background:#eee;}
+.tag.bad{background:#fee; color:#a00; border:1px solid #fbb;}
+.tag.ok{background:#efe; color:#060; border:1px solid #bfb;}
+details > summary{cursor:pointer;}
+</style></head><body><h1>Showdown Diff Report</h1><div class="card"><h2>Summary</h2><pre>{
+  &quot;diff_turns&quot;: 2,
+  &quot;rust&quot;: {
+    &quot;seed&quot;: &quot;[1,2,3,4]&quot;,
+    &quot;turns&quot;: 1,
+    &quot;winner&quot;: &quot;P1&quot;
+  },
+  &quot;showdown&quot;: {
+    &quot;seed&quot;: &quot;[1,2,3,4]&quot;,
+    &quot;turns&quot;: 3,
+    &quot;winner&quot;: &quot;P1&quot;
+  }
+}</pre><div>推定原因: 乱数シード差/処理順序差（速度/優先度/ターン終了処理）の影響</div></div><div class="card"><span class="tag bad">DIFF</span> 差分が検出されました。</div><div class="turn"><h2>Turn 0</h2><div class="grid"><div class="card"><h3>Missing in Rust</h3><details><summary>Switch { side: &quot;p1&quot;, to: &quot;Pikachu, L50, M&quot; }</summary><pre>{
+  &quot;hp&quot;: &quot;110/110&quot;,
+  &quot;kind&quot;: &quot;switch&quot;,
+  &quot;pokemon&quot;: &quot;p1a: Pikachu&quot;,
+  &quot;side&quot;: &quot;p1&quot;,
+  &quot;to&quot;: &quot;Pikachu, L50, M&quot;
+}</pre></details><details><summary>Switch { side: &quot;p2&quot;, to: &quot;Gyarados, L50, F&quot; }</summary><pre>{
+  &quot;hp&quot;: &quot;170/170&quot;,
+  &quot;kind&quot;: &quot;switch&quot;,
+  &quot;pokemon&quot;: &quot;p2a: Gyarados&quot;,
+  &quot;side&quot;: &quot;p2&quot;,
+  &quot;to&quot;: &quot;Gyarados, L50, F&quot;
+}</pre></details></div><div class="card"><h3>Extra in Rust</h3><details><summary>Move { source: &quot;p1a: Pikachu&quot;, move_id: &quot;thunderbolt&quot;, target: &quot;p2a: Gyarados&quot; }</summary><pre>{
+  &quot;kind&quot;: &quot;move&quot;,
+  &quot;move&quot;: &quot;Thunderbolt&quot;,
+  &quot;source&quot;: &quot;p1a: Pikachu&quot;,
+  &quot;target&quot;: &quot;p2a: Gyarados&quot;
+}</pre></details><details><summary>Move { source: &quot;p2a: Gyarados&quot;, move_id: &quot;splash&quot;, target: &quot;p1a: Pikachu&quot; }</summary><pre>{
+  &quot;kind&quot;: &quot;move&quot;,
+  &quot;move&quot;: &quot;Splash&quot;,
+  &quot;source&quot;: &quot;p2a: Gyarados&quot;,
+  &quot;target&quot;: &quot;p1a: Pikachu&quot;
+}</pre></details><details><summary>Switch { side: &quot;p1&quot;, to: &quot;Pikachu&quot; }</summary><pre>{
+  &quot;hp&quot;: &quot;110/110&quot;,
+  &quot;kind&quot;: &quot;switch&quot;,
+  &quot;pokemon&quot;: &quot;p1a: Pikachu&quot;,
+  &quot;side&quot;: &quot;p1&quot;,
+  &quot;to&quot;: &quot;Pikachu&quot;
+}</pre></details><details><summary>Switch { side: &quot;p2&quot;, to: &quot;Gyarados&quot; }</summary><pre>{
+  &quot;hp&quot;: &quot;170/170&quot;,
+  &quot;kind&quot;: &quot;switch&quot;,
+  &quot;pokemon&quot;: &quot;p2a: Gyarados&quot;,
+  &quot;side&quot;: &quot;p2&quot;,
+  &quot;to&quot;: &quot;Gyarados&quot;
+}</pre></details></div></div><div class="card"><h3>Mismatched payload</h3><span class="tag ok">none</span></div></div><div class="turn"><h2>Turn 1</h2><div class="grid"><div class="card"><h3>Missing in Rust</h3><details><summary>Move { source: &quot;p1a: Pikachu&quot;, move_id: &quot;thunderbolt&quot;, target: &quot;p2a: Gyarados&quot; }</summary><pre>{
+  &quot;kind&quot;: &quot;move&quot;,
+  &quot;move&quot;: &quot;Thunderbolt&quot;,
+  &quot;source&quot;: &quot;p1a: Pikachu&quot;,
+  &quot;target&quot;: &quot;p2a: Gyarados&quot;
+}</pre></details><details><summary>Move { source: &quot;p2a: Gyarados&quot;, move_id: &quot;splash&quot;, target: &quot;p2a: Gyarados&quot; }</summary><pre>{
+  &quot;kind&quot;: &quot;move&quot;,
+  &quot;move&quot;: &quot;Splash&quot;,
+  &quot;source&quot;: &quot;p2a: Gyarados&quot;,
+  &quot;target&quot;: &quot;p2a: Gyarados&quot;
+}</pre></details></div><div class="card"><h3>Extra in Rust</h3><span class="tag ok">none</span></div></div><div class="card"><h3>Mismatched payload</h3><span class="tag ok">none</span></div></div></body></html>

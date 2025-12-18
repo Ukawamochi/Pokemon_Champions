@@ -1,0 +1,72 @@
+{
+  "id": "pikachu_thunderbolt_vs_gyarados_splash_turn1",
+  "formatid": "gen9customgame",
+  "seed": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "p1": {
+    "name": "P1",
+    "team": "Pikachu @ Oran Berry\nAbility: Static\nLevel: 50\nEVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\nHardy Nature\n- Thunderbolt\n"
+  },
+  "p2": {
+    "name": "P2",
+    "team": "Gyarados @ Oran Berry\nAbility: Intimidate\nLevel: 50\nEVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\nHardy Nature\n- Splash\n"
+  },
+  "rawChunks": [
+    "|t:|1766087526\n|gametype|singles\n|player|p1|P1||\n|player|p2|P2||\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Pikachu, L50, M|\n|poke|p2|Gyarados, L50, F|\n|teampreview",
+    "|\n|t:|1766087526\n|teamsize|p1|1\n|teamsize|p2|1\n|start\n|switch|p1a: Pikachu|Pikachu, L50, M|110/110\n|switch|p2a: Gyarados|Gyarados, L50, F|170/170\n|-ability|p2a: Gyarados|Intimidate|boost\n|-unboost|p1a: Pikachu|atk|1\n|turn|1",
+    "|\n|t:|1766087526\n|move|p1a: Pikachu|Thunderbolt|p2a: Gyarados\n|-supereffective|p2a: Gyarados\n|-damage|p2a: Gyarados|46/170\n|-enditem|p2a: Gyarados|Oran Berry|[eat]\n|-heal|p2a: Gyarados|56/170|[from] item: Oran Berry\n|move|p2a: Gyarados|Splash|p2a: Gyarados\n|-nothing\n|\n|upkeep\n|turn|2",
+    "|\n|win|P1"
+  ],
+  "log": [
+    "|t:|1766087526",
+    "|gametype|singles",
+    "|player|p1|P1||",
+    "|player|p2|P2||",
+    "|gen|9",
+    "|tier|[Gen 9] Custom Game",
+    "|clearpoke",
+    "|poke|p1|Pikachu, L50, M|",
+    "|poke|p2|Gyarados, L50, F|",
+    "|teampreview",
+    "|",
+    "|t:|1766087526",
+    "|teamsize|p1|1",
+    "|teamsize|p2|1",
+    "|start",
+    "|switch|p1a: Pikachu|Pikachu, L50, M|110/110",
+    "|switch|p2a: Gyarados|Gyarados, L50, F|170/170",
+    "|-ability|p2a: Gyarados|Intimidate|boost",
+    "|-unboost|p1a: Pikachu|atk|1",
+    "|turn|1",
+    "|",
+    "|t:|1766087526",
+    "|move|p1a: Pikachu|Thunderbolt|p2a: Gyarados",
+    "|-supereffective|p2a: Gyarados",
+    "|-damage|p2a: Gyarados|46/170",
+    "|-enditem|p2a: Gyarados|Oran Berry|[eat]",
+    "|-heal|p2a: Gyarados|56/170|[from] item: Oran Berry",
+    "|move|p2a: Gyarados|Splash|p2a: Gyarados",
+    "|-nothing",
+    "|",
+    "|upkeep",
+    "|turn|2",
+    "|",
+    "|win|P1"
+  ],
+  "events": {
+    "damage": [
+      {
+        "target": "p2a: Gyarados",
+        "hp": "46/170",
+        "details": []
+      }
+    ],
+    "status": [],
+    "win": "P1",
+    "tie": false
+  }
+}

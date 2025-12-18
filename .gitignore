@@ -1,6 +1,16 @@
 .serena
 .venv
+*/target
 /target
 /pokemon-showdown
 /node_modules
 /battle/target
+/src/data/species.rs
+/src/data/moves.rs
+/src/data/abilities.rs
+/src/data/items.rs
+/src/data/types.rs
+package.json
+package-lock.json
+AGENTS.md
+CodexGuide.md

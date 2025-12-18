@@ -1,10 +1,10 @@
 use anyhow::Result;
-use pokemon_battle_matrix::battle::{
+use pokemon_battle_core::battle::{
     BattleResult, BattleView, BattlerView, MoveEventView, MoveOutcome, MoveView, PlayerAction, Side,
     SideView, StatStagesView, StatusEventView, TeamMemberView,
 };
-use pokemon_battle_matrix::model::{Pokemon, StatusCondition};
-use pokemon_battle_matrix::types::type_effectiveness;
+use pokemon_battle_core::model::{Pokemon, StatusCondition};
+use pokemon_battle_core::types::type_effectiveness;
 use std::collections::HashSet;
 use std::io::{self, Write};
 use std::thread;

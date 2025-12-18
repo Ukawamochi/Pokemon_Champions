@@ -1,0 +1,23 @@
+name: Showdown Compatibility Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compat-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build
+        run: cargo build --release
+      - name: Run compatibility diff
+        run: ./tools/ci_diff_check.sh --fail-on-diff
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compatibility-reports
+          path: reports/*.html
+

@@ -1,0 +1,18 @@
+{
+  "formatid": "gen9customgame",
+  "id": "pikachu_thunderbolt_vs_gyarados_splash_turn1",
+  "log": [
+    "|switch|p1a: Pikachu|Pikachu|110/110",
+    "|switch|p2a: Gyarados|Gyarados|170/170",
+    "|move|p1a: Pikachu|Thunderbolt|p2a: Gyarados",
+    "|-damage|p2a: Gyarados|26/170",
+    "|move|p2a: Gyarados|Splash|p1a: Pikachu",
+    "|win|P1"
+  ],
+  "seed": [
+    1,
+    2,
+    3,
+    4
+  ]
+}
